@@ -1,0 +1,17 @@
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/ApiGatewayResponse.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/dao/LivroDAO.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/ListarLivrosHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/dao/DynamoDBAdapter.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/model/Livro.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/DeletarProdutoHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/Response.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/ListarProdutosHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/CadastrarProdutoHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/EditarLivroHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/CadastrarLivroHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/DeletarLivroHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/GetProdutoHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/GetLivroHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/model/Produto.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/crud/EditarProdutoHandler.java
+/home/diogenes/eclipse-workspace/aws-java-ecom-api/src/main/java/br/com/ufpb/dcx/si/dao/ProdutoDAO.java

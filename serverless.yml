@@ -1,0 +1,157 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: ecom-api
+
+custom:
+  ecomLivrosTableName: 'java-ecom-livros-${self:provider.stage}'
+  ecomProdutosTableName: 'java-ecom-produtos-${self:provider.stage}'
+
+provider:
+  name: aws
+  runtime: java8
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["LivrosDynamoDBTable", "Arn" ] }
+        - { "Fn::GetAtt": ["ProdutosDynamoDBTable", "Arn" ]}
+  environment:
+    ECOM_LIVROS_TABLE_NAME: ${self:custom.ecomLivrosTableName}
+    ECOM_PRODUTOS_TABLE_NAME: ${self:custom.ecomProdutosTableName}
+
+package:
+  artifact: 'target/${self:service}-${self:provider.stage}.jar'
+
+functions:
+#Entidade Livros
+   listarLivros:
+      handler: br.com.ufpb.dcx.si.crud.ListarLivrosHandler
+      events:
+         - http:
+            path: /livros
+            method: get
+            
+   cadastrarLivro:
+      handler: br.com.ufpb.dcx.si.crud.CadastrarLivroHandler
+      events:
+         - http:
+            path: /livros
+            method: post
+   
+   
+   editarLivro:
+      handler: br.com.ufpb.dcx.si.crud.EditarLivroHandler
+      events:
+         - http:
+            path: /livros/{id}
+            method: put
+      
+   deletarLivro:
+      handler: br.com.ufpb.dcx.si.crud.DeletarLivroHandler
+      events:
+         - http:
+            path: /livros/{id}
+            method: delete
+            
+   getLivro:
+      handler: br.com.ufpb.dcx.si.crud.GetLivrosHandler
+      events:
+         - http:
+            path: /livros/{id}
+            method: get
+
+
+#Entidade Produto
+   listarProdutos:
+      handler: br.com.ufpb.dcx.si.crud.ListarProdutosHandler
+      events:
+         - http:
+            path: /produtos
+            method: get
+            
+   cadastrarProduto:
+      handler: br.com.ufpb.dcx.si.crud.CadastrarProdutoHandler
+      events:
+         - http:
+            path: /produtos
+            method: post
+   
+   
+   editarProduto:
+      handler: br.com.ufpb.dcx.si.crud.EditarProdutoHandler
+      events:
+         - http:
+            path: /produtos/{id}
+            method: put
+      
+   deletarProduto:
+      handler: br.com.ufpb.dcx.si.crud.DeletarProdutoHandler
+      events:
+         - http:
+            path: /produtos/{id}
+            method: delete
+            
+   getProduto:
+      handler: br.com.ufpb.dcx.si.crud.GetProdutosHandler
+      events:
+         - http:
+            path: /produtos/{id}
+            method: get
+
+
+resources:
+  Resources:
+    LivrosDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.ecomLivrosTableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: title
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: title
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    ProdutosDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.ecomProdutosTableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

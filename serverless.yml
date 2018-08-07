@@ -73,7 +73,7 @@ functions:
             method: delete
             
    getLivro:
-      handler: br.com.ufpb.dcx.si.crud.GetLivrosHandler
+      handler: br.com.ufpb.dcx.si.crud.GetLivroHandler
       events:
          - http:
             path: /livros/{id}
@@ -111,7 +111,7 @@ functions:
             method: delete
             
    getProduto:
-      handler: br.com.ufpb.dcx.si.crud.GetProdutosHandler
+      handler: br.com.ufpb.dcx.si.crud.GetProdutoHandler
       events:
          - http:
             path: /produtos/{id}

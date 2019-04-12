@@ -10,9 +10,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Livro {
 
 	private String id;
-	private String title;
-	private String author;
-	private int edition;
+	private String titulo;
+	private String autor;
+	private int edicao;
 
 	public Livro() {
 		// TODO Auto-generated constructor stub
@@ -28,35 +28,35 @@ public class Livro {
 		this.id = id;
 	}
 
-	@DynamoDBRangeKey(attributeName = "title")
-	public String getTitle() {
-		return this.title;
+	@DynamoDBRangeKey(attributeName = "titulo")
+	public String getTitulo() {
+		return this.titulo;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String titulo) {
+		this.title = titulo;
 	}
 
-	@DynamoDBAttribute(attributeName = "author")
-	public String getAuthor() {
-		return this.author;
+	@DynamoDBAttribute(attributeName = "autor")
+	public String getAutor() {
+		return this.autor;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthor(String autor) {
+		this.author = autor;
 	}
 
-	@DynamoDBAttribute(attributeName = "edition")
-	public int getEdition() {
-		return this.edition;
+	@DynamoDBAttribute(attributeName = "edicao")
+	public int getEdicao() {
+		return this.edicao;
 	}
 
-	public void setEdition(int edition) {
-		this.edition = edition;
+	public void setEdition(int edicao) {
+		this.edition = edicao;
 	}
 
 	public String toString() {
-		return String.format("Livro [id=%s, title=%s, author=%s, edition=%d]", this.id, this.title, this.author,
-				this.edition);
+		return String.format("Livro [id=%s, titulo=%s, autor=%s, edicao=%d]", this.id, this.titulo, this.autor,
+				this.edicao);
 	}
 }
